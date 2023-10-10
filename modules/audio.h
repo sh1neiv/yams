@@ -22,8 +22,9 @@ char* getAudioMasterVolume() {
 		pclose(p);
 	}
 
-	char* result = malloc(7);
-	snprintf(result, 7, "V %d%%", volume);
+	size_t sz = snprintf(NULL, 0, "V %d%%", volume) + 1;
+	char *result = malloc(sz);
+	snprintf(result, sz, "V %d%%", volume);
 	
 	return result;
 }

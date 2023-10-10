@@ -23,7 +23,7 @@ char* getBatteryInfo() {
 	fclose(f);
 
 	f = fopen("/sys/class/power_supply/"BAT"/status", "r");
-	fscanf(f, "%s", &status);
+	fscanf(f, "%15s", &status);
 	fclose(f);
 
 	if (strcmp(status, "Charging") == 0) {
@@ -37,9 +37,10 @@ char* getBatteryInfo() {
 		memset(status, 0, 16);
 		strcpy(status, arrowDown);
 	}
-	
-	char* result = malloc(16);
-	snprintf(result, 16, "B %s%d%%", status, battery_percantage);
+
+	size_t sz = snprintf(NULL, 0, "B %s%d%%", status, battery_percantage) + 1;
+	char* result = malloc(sz);
+	snprintf(result, sz, "B %s%d%%", status, battery_percantage);
 
 	return result;
 }

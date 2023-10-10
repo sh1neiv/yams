@@ -11,8 +11,21 @@ char* getTimeInfo() {
 	time(&t);
 	curtime = localtime(&t);
 
-	char* result = malloc(16);
-	snprintf(result, 16, "%d.%d.%d %d:%.2d", curtime -> tm_mday, curtime -> tm_mon, curtime -> tm_year + 1900, curtime -> tm_hour, curtime -> tm_min);
+	size_t sz = snprintf(NULL, 0, "%d.%d.%d %d:%.2d", 
+			curtime -> tm_mday,
+			curtime -> tm_mon,
+			curtime -> tm_year + 1900,
+			curtime -> tm_hour,
+			curtime -> tm_min
+		) + 1;
+	char* result = malloc(sz);
+	snprintf(result, sz, "%d.%d.%d %d:%.2d", 
+			curtime -> tm_mday, 
+			curtime -> tm_mon, 
+			curtime -> tm_year + 1900, 
+			curtime -> tm_hour, 
+			curtime -> tm_min
+		);
 	return result;
 }
 

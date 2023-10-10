@@ -10,13 +10,13 @@ char* getWrlNetworkInfo() {
 		perror("No "WRL_INTERFACE" network interface");
 		return NULL;
 	}
-	char status[4];
-	char* result = malloc(8);
+	char status[7];
+	char* result = malloc(10);
 	
 	fscanf(wrl, "%s", status);
 	fclose(wrl);
 
-	snprintf(result, 8, "WF %s", status);
+	snprintf(result, 10, "WF %s", status);
 	return result;
 }
 
@@ -27,13 +27,13 @@ char* getWrdNetworkInfo() {
 		return NULL;
 	}
 	
-	char status[4];
-	char* result = malloc(8);
+	char status[7];
+	char* result = malloc(10);
 
 	fscanf(wrd, "%s", status);
 	fclose(wrd);
 
-	snprintf(result, 8, "WD %s", status);
+	snprintf(result, 10, "WD %s", status);
 	return result;
 }
 

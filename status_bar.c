@@ -13,8 +13,9 @@
 #include <X11/Xlib.h>
 
 /* related stuff */
-char* (*modules[4]) () = {
+char* (*modules[5]) () = {
 	getAudioMasterVolume,
+	getWrlNetworkInfo,
 	getWrdNetworkInfo,
 	getBatteryInfo,
 	getTimeInfo

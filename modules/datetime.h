@@ -1,8 +1,6 @@
 #ifndef _DATETIME_H
 #define _DATETIME_H
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <time.h>
 
 char* getTimeInfo() {
@@ -13,7 +11,7 @@ char* getTimeInfo() {
 
 	size_t sz = snprintf(NULL, 0, "%d.%d.%d %d:%.2d", 
 			curtime -> tm_mday,
-			curtime -> tm_mon,
+			curtime -> tm_mon + 1,
 			curtime -> tm_year + 1900,
 			curtime -> tm_hour,
 			curtime -> tm_min
@@ -21,7 +19,7 @@ char* getTimeInfo() {
 	char* result = malloc(sz);
 	snprintf(result, sz, "%d.%d.%d %d:%.2d", 
 			curtime -> tm_mday, 
-			curtime -> tm_mon, 
+			curtime -> tm_mon + 1, 
 			curtime -> tm_year + 1900, 
 			curtime -> tm_hour, 
 			curtime -> tm_min

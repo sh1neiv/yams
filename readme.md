@@ -4,6 +4,7 @@
 - network
 - battery
 - datetime
+- cmus
 
 ### Building
 To build run this command:
